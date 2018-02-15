@@ -1,0 +1,38 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+coverage
+.nyc_output
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+*.swp
+*.swo
+.DS_Store
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# optional node REPL dependency
+.node_repl_history
+
+# editors
+.vscode
+.idea
+
+# Keys/env
+*.aes
+*.env
+
+# Artifacts
+dist
+.serverless
+.webpack
+**/serverless.yml
+.deploy/**/
+lib/**/webpack.config.js

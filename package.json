@@ -1,0 +1,34 @@
+{
+  "name": "dev-documentation",
+  "version": "1.0.0",
+  "description": "Store and export Dev Documentation",
+  "scripts": {
+    "compile": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/venzee/dev-documentation.git"
+  },
+  "author": "Venzee, Inc.",
+  "license": "UNLICENSED",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/venzee/dev-documentation/issues"
+  },
+  "homepage": "https://github.com/venzee/dev-documentation#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "async": "^2.6.0",
+    "eslint-plugin-varspacing": "^1.1.0",
+    "fs-extra": "^5.0.0",
+    "glob": "^7.1.2",
+    "lodash": "^4.17.5",
+    "markdown-it": "^8.4.0",
+    "markdown-it-emoji": "^1.4.0",
+    "markdown-it-highlightjs": "^3.0.0",
+    "markdown-it-mermaid": "^0.2.5",
+    "markdown-it-toc-and-anchor": "^4.1.2",
+    "object-streaming-tools": "^1.1.1",
+    "string-template": "^1.0.0"
+  }
+}
