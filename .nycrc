@@ -1,0 +1,28 @@
+{
+  "lines": 99,
+  "statements": 99,
+  "functions": 99,
+  "branches": 99,
+  "require": [
+    "./spec/.config/bootstrap.js",
+    "babel-core/register"
+  ],
+  "exclude": [
+    "spec/**/*.js",
+    "**/constants.js",
+    "**/env.js",
+    "**/env/index.js",
+    "**/fileStorage/lib/createClient.js",
+    "**/passValue/**",
+    "**/logger/index.js",
+    "**/webpack.config.js",
+    "coverage",
+    "tools/util/**/*.js",
+    "scripts/**/*.js"
+  ],
+  "reporter": [
+    "text",
+    "html"
+  ],
+  "all": true
+}

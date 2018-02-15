@@ -1,0 +1,4 @@
+{
+  "common": "./lib/common",
+  "tools":  "./tools"
+}

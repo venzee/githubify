@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "description": "Store and export Dev Documentation",
   "scripts": {
-    "compile": ""
+    "pretest": "eslint --fix .",
+    "test": "npm run run-tests",
+    "tdd": "npm run run-tdd",
+    "coverage": "nyc npm run run-tests",
+    "run-tests": "cross-env LOG_LEVEL=OFF mocha --require ./spec/.config/bootstrap.js       --colors --compilers js:babel-core/register ./spec/**/*.test.js",
+    "run-tdd": "mocha --require ./spec/.config/bootstrap.js --watch --colors --require babel-core/register ./spec/**/*.test.js",
+    "push_to_coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -19,16 +25,40 @@
   "dependencies": {},
   "devDependencies": {
     "async": "^2.6.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-istanbul": "^4.1.5",
+    "babel-plugin-module-resolver": "^3.0.0",
+    "babel-plugin-namespaces": "^0.2.4",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
+    "colors": "^1.1.2",
+    "cross-env": "^5.1.1",
+    "eslint": "^4.7.2",
+    "eslint-plugin-chai-expect": "^1.1.1",
+    "eslint-plugin-mocha": "^4.11.0",
     "eslint-plugin-varspacing": "^1.1.0",
     "fs-extra": "^5.0.0",
     "glob": "^7.1.2",
+    "istanbul-instrumenter-loader": "^3.0.0",
+    "js-yaml": "^3.10.0",
     "lodash": "^4.17.5",
     "markdown-it": "^8.4.0",
     "markdown-it-emoji": "^1.4.0",
     "markdown-it-highlightjs": "^3.0.0",
     "markdown-it-mermaid": "^0.2.5",
     "markdown-it-toc-and-anchor": "^4.1.2",
+    "mocha": "^3.5.3",
+    "mocha-webpack": "^1.0.1",
+    "mock-fs": "^4.4.1",
+    "nyc": "^11.4.1",
     "object-streaming-tools": "^1.1.1",
-    "string-template": "^1.0.0"
+    "optimist": "^0.6.1",
+    "proxyquire": "^1.8.0",
+    "sinon": "^2.4.1",
+    "sinon-chai": "^2.14.0",
+    "string-template": "^1.0.0",
+    "webpack": "^3.8.1"
   }
 }
