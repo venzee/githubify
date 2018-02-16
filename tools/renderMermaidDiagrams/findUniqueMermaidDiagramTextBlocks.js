@@ -1,6 +1,4 @@
-const isEqual = require( 'lodash/isEqual' );
-const partial = require( 'lodash/partial' );
-
+const last = require( 'lodash/last' );
 
 const TitlePattern = '#+ +([^\n]+)\n\n';
 const TitleIndex   = 2;
@@ -8,7 +6,7 @@ const TitleIndex   = 2;
 const MermaidPattern = '```mermaid\n([^`]*)```';
 const MermaidIndex   = 4;
 
-const SearchPattern = `(${  TitlePattern })?(${ MermaidPattern })`;
+const SearchPattern = `(${ TitlePattern })?(${ MermaidPattern })`;
 
 
 function findUniqueMermaidDiagramTextBlocks( markdownText ){
@@ -20,7 +18,14 @@ function findUniqueMermaidDiagramTextBlocks( markdownText ){
 
   while( match ){
   
-    updateMatches( matches, createEntryFor( match ) );
+    const newEntry = createEntryFor( match );
+    
+    const updateMatches = newEntry.title == null
+      ? updateNoTitleMatches
+      : updateTitleMatches;
+
+    updateMatches( matches, newEntry );
+
     match = matchMermaidBlock.exec( markdownText );
 
   }
@@ -49,11 +54,49 @@ function createEntryFor( match ){
     
 }
 
-function updateMatches( matches, newEntry ){
+function updateTitleMatches( matches, newEntry ){
 
-  const existingEntry = matches.find( partial( isEqual, newEntry ) );
+  const existingEntries = matches
+    .filter( ( { title } )=>title == null || title.startsWith( newEntry.title ) );
 
-  if( existingEntry == null ) return matches.push( newEntry );
-  existingEntry.rangesInFile.push( ...newEntry.rangesInFile );
+  if( existingEntries.length === 0 ) return matches.push( newEntry );
+ 
+  const textMatch = existingEntries.find( e=>e.text === newEntry.text );
+  if( textMatch != null ) return updateExistingTitleEntry( matches, textMatch, newEntry ); 
+  
+  const title = generateModifiedTitle( textMatch, newEntry.title );
+  matches.push( Object.assign( {}, newEntry, { title }  ) ); // eslint-disable-line
+
+}
+
+function updateNoTitleMatches( matches, newEntry ){
+
+  const textMatch = matches
+    .find( ( { text } )=>text === newEntry.text );
+
+  if( textMatch == null ) return matches.push( newEntry );
+  textMatch.rangesInFile.push( ...newEntry.rangesInFile );
+ 
+}
+
+function updateExistingTitleEntry( matches, textMatch, newEntry ){
+
+  textMatch.title = textMatch.title == null 
+    ? newEntry.title
+    : textMatch.title;
+
+  if( textMatch.title == newEntry.title ) return textMatch.rangesInFile.push( ...newEntry.rangesInFile );
+  matches.push( newEntry );
+
+} 
+
+function generateModifiedTitle( textMatch, title ){
+
+  const lastNumber    = last( /_(\d+)$/g.exec( last( textMatch ) ) );
+  const titleModifier = lastNumber == null
+    ? 2
+    : parseInt( lastNumber );
+
+  return `${ title }_${ titleModifier }`;
 
 }

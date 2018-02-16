@@ -83,19 +83,21 @@ graph TD;
 
   it( 'should create two entries with identical text, if the diagram blocks have different titles', ()=>{
 
-    const title = 'Some Title';
-    const text  =  MermaidDiagram.substr( 1 );
+    const title        = 'Some Title';
+    const anotherTitle = 'Another Title';
+    const text         =  MermaidDiagram.substr( 1 );
 
-    const expected = [ { title, text } ];
+    const expected = [ { title, text }, { title: anotherTitle, text } ];
 
     const markdownText = `# ${
       title }\n\n${ MermaidDiagramBlock }\n\n# ${
-      title }\n\n${ MermaidDiagramBlock }`;
+      anotherTitle }\n\n${ MermaidDiagramBlock }`;
 
     expect( findUniqueMermaidDiagramTextBlocks( markdownText ) )
       .to.deep.equal( expected );
   
   } );
+  
 
   it( 'should add the startIndex and length of text of each diagram text block found', ()=>{
 
@@ -133,6 +135,54 @@ graph TD;
     expect( AnotherMermaidDiagramBlockResults.rangesInFile )
       .to.deep.equal( expectedForAnotherMermaidDiagramBlockResult );
   
+  } );
+
+  describe( 'should create 1 entry for 2 identical text blocks,', ()=>{
+
+    const title           = 'Some Title';
+    const text            =  MermaidDiagram.substr( 1 );
+    const expectedNoTitle = { title, text };
+
+    const padding          = '\n\n';
+    const BlockWithTitle   = `# ${ title }${ padding }${ MermaidDiagramBlock }`;
+    const BlockWithNoTitle = `${ MermaidDiagramBlock }`;
+
+    it( 'where only the 1st block has a title', ()=>{
+
+      const markdownTextNoTitle  = `${ BlockWithTitle }${ padding }${ BlockWithNoTitle }`;
+      const expectedRangesInFile = [
+        { startIndex: 0, length: BlockWithTitle.length },
+        { startIndex: BlockWithTitle.length + padding.length, length: BlockWithNoTitle.length }
+      ];
+      
+      const [ actual ] = findUniqueMermaidDiagramTextBlocks( markdownTextNoTitle );
+ 
+      expect( actual )
+        .to.deep.equal( expectedNoTitle );
+  
+      expect( actual.rangesInFile )
+        .to.deep.equal( expectedRangesInFile );
+
+    } );
+    
+    it( 'where only the 2nd block has a title', ()=>{
+      
+      const markdownTextNoTitle  = `${ BlockWithNoTitle }${ padding }${ BlockWithTitle }`;
+      const expectedRangesInFile = [
+        { startIndex: 0, length: BlockWithNoTitle.length },
+        { startIndex: BlockWithNoTitle.length + padding.length, length: BlockWithTitle.length }
+      ];
+
+      const [ actual ]          = findUniqueMermaidDiagramTextBlocks( markdownTextNoTitle );
+    
+      expect( actual )
+        .to.deep.equal( expectedNoTitle );
+    
+      expect( actual.rangesInFile )
+        .to.deep.equal( expectedRangesInFile );
+
+    } );
+
   } );
   
 } );
