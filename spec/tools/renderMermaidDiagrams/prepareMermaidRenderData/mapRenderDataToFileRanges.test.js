@@ -1,6 +1,6 @@
-import mapRenderDataToFileRanges from '<tools>/renderMermaidDiagrams/mapRenderDataToFileRanges';
+import mapRenderDataToFileRanges from '<tools>/renderMermaidDiagrams/prepareMermaidRenderData/mapRenderDataToFileRanges'; // eslint-disable-line max-len
 
-describe( 'The <tools>/renderMermaidDiagrams/mapRenderDataToFileRanges function', ()=>{
+describe( 'The <tools>/renderMermaidDiagrams/prepareMermaidRenderData/mapRenderDataToFileRanges function', ()=>{
   
   it( 'should map in-text ranges to their respective replacement text' ,()=>{
 

@@ -1,9 +1,9 @@
 import generateDiagramImageOutputPath, {
   MediaDirname,
-  OutputFileTypeExtension } from '<tools>/renderMermaidDiagrams/generateDiagramImageOutputPath';
+  OutputFileTypeExtension } from '<tools>/renderMermaidDiagrams/prepareMermaidRenderData/generateDiagramImageOutputPath'; // eslint-disable-line max-len
 import path from 'path';
 
-describe( 'The <tools>/renderMermaidDiagrams/generateDiagramImageOutputPath function', ()=>{
+describe( 'The <tools>/renderMermaidDiagrams/prepareMermaidRenderData/generateDiagramImageOutputPath function', ()=>{
  
   const dirPath              =  path.join( 'path', 'to' );
   const markdownFileBaseName = 'markdownFile';
@@ -32,7 +32,7 @@ describe( 'The <tools>/renderMermaidDiagrams/generateDiagramImageOutputPath func
 
     const v4                             = sinon.spy( ()=>expectedBasename );
     const generateDiagramImageOutputPath = proxyquire(
-      '<tools>/renderMermaidDiagrams/generateDiagramImageOutputPath',
+      '<tools>/renderMermaidDiagrams/prepareMermaidRenderData/generateDiagramImageOutputPath',
       { uuid: { v4 } }
     ); 
 
