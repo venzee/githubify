@@ -1,6 +1,6 @@
-import createInjectLinkAtPosition from '<tools>/renderMermaidDiagrams/prepareMermaidRenderData/injectImageLinks/injectLinkAtPosition'; // eslint-disable-line max-len
+import createInjectLinkAtPosition from '<tools>/renderMermaidDiagrams/updateMarkdown/injectImageLinks/injectLinkAtPosition'; // eslint-disable-line max-len
 
-describe( 'The <tools>/renderMermaidDiagrams/prepareMermaidRenderData/injectImageLinks function', ()=>{
+describe( 'The <tools>/renderMermaidDiagrams/updateMarkdown/injectImageLinks function', ()=>{
 
   const imageLinkText = '![alt Title1](where/to/copy/rendered/markdown/file/media/title-1.svg)';
   const textToReplace = '1234567890';

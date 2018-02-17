@@ -40,14 +40,7 @@ describe( 'The <tools>/renderMermaidDiagrams/prepareMermaidRenderData function',
       Padding }${ TitleTextBlock2 }${ Padding }${ DiagramTextBlock2 }${
       Padding }${ DiagramTextBlock1 }`;
 
-    const expectedMarkdownOutputText = `![alt Title1](where/to/copy/rendered/markdown/file/media/title-1.svg)${
-      Padding }![alt Title2](where/to/copy/rendered/markdown/file/media/title-2.svg)${
-      Padding }![alt Title1](where/to/copy/rendered/markdown/file/media/title-1.svg)`;
-
-    const expected = {
-      renderData:         [ outputInfoDiagram1, outputInfoDiagram2 ],
-      markdownOutputText: expectedMarkdownOutputText
-    };
+    const expected = [ outputInfoDiagram1, outputInfoDiagram2 ];
 
     expect( prepareMermaidRenderData( { target: markdownTargetPath, text } ) )
       .to.deep.equal( expected );
