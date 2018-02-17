@@ -34,29 +34,20 @@ describe( 'The <tools>/renderMermaidDiagrams/prepareMermaidRenderData function',
     rangesInFile:  [ { startIndex: 64, length: 53 } ] 
   } );
 
-  it( 'should generate an array of render data sorted by injection start indices', ()=>{
+  it( 'should generate an object containing mermaid render data and the text for he markdown file to write', ()=>{
 
     const text = `${ TitleTextBlock1 }${ Padding }${ DiagramTextBlock1 }${
       Padding }${ TitleTextBlock2 }${ Padding }${ DiagramTextBlock2 }${
-      Padding }${ DiagramTextBlock1 }${ Padding }`;
+      Padding }${ DiagramTextBlock1 }`;
 
-    const expected = [
-      { 
-        startIndex: 0,
-        length:     62,
-        output:     outputInfoDiagram1
-      }, 
-      { 
-        startIndex: 64,
-        length:     53,
-        output:     outputInfoDiagram2
-      },
-      { 
-        startIndex: 119,
-        length:     51,
-        output:     outputInfoDiagram1
-      }
-    ];
+    const expectedMarkdownOutputText = `![alt Title1](where/to/copy/rendered/markdown/file/media/title-1.svg)${
+      Padding }![alt Title2](where/to/copy/rendered/markdown/file/media/title-2.svg)${
+      Padding }![alt Title1](where/to/copy/rendered/markdown/file/media/title-1.svg)`;
+
+    const expected = {
+      renderData:         [ outputInfoDiagram1, outputInfoDiagram2 ],
+      markdownOutputText: expectedMarkdownOutputText
+    };
 
     expect( prepareMermaidRenderData( { target: markdownTargetPath, text } ) )
       .to.deep.equal( expected );
