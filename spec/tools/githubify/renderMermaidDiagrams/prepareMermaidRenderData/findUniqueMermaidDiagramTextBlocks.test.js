@@ -1,6 +1,6 @@
-import findUniqueMermaidDiagramTextBlocks from '<tools>/renderMermaidDiagrams/prepareMermaidRenderData/findUniqueMermaidDiagramTextBlocks'; // eslint-disable-line max-len
+import findUniqueMermaidDiagramTextBlocks from '<tools>/githubify/renderMermaidDiagrams/prepareMermaidRenderData/findUniqueMermaidDiagramTextBlocks'; // eslint-disable-line max-len
 
-describe( 'The <tools>/renderMermaidDiagrams/prepareMermaidRenderData/findUniqueMermaidDiagramTextBlocks function', ()=>{ // eslint-disable-line max-len
+describe( 'The <tools>/githubify/renderMermaidDiagrams/prepareMermaidRenderData/findUniqueMermaidDiagramTextBlocks function', ()=>{ // eslint-disable-line max-len
 
   const MermaidDiagram = `
 graph TD;

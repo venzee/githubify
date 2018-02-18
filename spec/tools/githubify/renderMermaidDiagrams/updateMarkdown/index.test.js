@@ -1,6 +1,6 @@
-import updateMarkdown from '<tools>/renderMermaidDiagrams/updateMarkdown';
+import updateMarkdown from '<tools>/githubify/renderMermaidDiagrams/updateMarkdown';
 
-describe( 'The <tools>/renderMermaidDiagrams/updateMarkdown function', ()=>{
+describe( 'The <tools>/githubify/renderMermaidDiagrams/updateMarkdown function', ()=>{
 
   it( 'should replace all Mermaid diagram text blocks with image links', ()=>{
 

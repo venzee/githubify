@@ -1,7 +1,7 @@
-import prepareMermaidRenderData  from '<tools>/renderMermaidDiagrams/prepareMermaidRenderData';
+import prepareMermaidRenderData  from '<tools>/githubify/renderMermaidDiagrams/prepareMermaidRenderData';
 import path from 'path';
 
-describe( 'The <tools>/renderMermaidDiagrams/prepareMermaidRenderData function', ()=>{
+describe( 'The <tools>/githubify/renderMermaidDiagrams/prepareMermaidRenderData function', ()=>{
  
   const markdownTargetPath = path.join( 'where', 'to', 'copy', 'rendered', 'markdown', 'file.md' );
 

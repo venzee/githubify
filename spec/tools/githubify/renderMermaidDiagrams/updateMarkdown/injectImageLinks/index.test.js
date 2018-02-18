@@ -1,6 +1,6 @@
-import injectImageLinks from '<tools>/renderMermaidDiagrams/updateMarkdown/injectImageLinks';
+import injectImageLinks from '<tools>/githubify/renderMermaidDiagrams/updateMarkdown/injectImageLinks';
 
-describe( 'The <tools>/renderMermaidDiagrams/updateMarkdown/injectImageLinks function', ()=>{
+describe( 'The <tools>/githubify/renderMermaidDiagrams/updateMarkdown/injectImageLinks function', ()=>{
 
   const Title1          = 'Title1';
   const Title2          = 'Title2';
