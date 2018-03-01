@@ -58,7 +58,11 @@ function renderDiagrams( { renderData, tempDir }, onDiagramsRendered ){
     .on( 'error', onDiagramsRendered )
     .pipe( apply( asyncify( appendTempTarget.bind( null, tempDir ) ) ) )
     .on( 'error', onDiagramsRendered )
+    .pipe( apply( ensureOutputDirectoryExist( 'tempTarget' ) ) )
+    .on( 'error', onDiagramsRendered )
     .pipe( apply( writeTempFile ) )
+    .on( 'error', onDiagramsRendered )
+    .pipe( apply( ensureOutputDirectoryExist( 'diagramTarget' ) ) )
     .on( 'error', onDiagramsRendered )
     .pipe( apply( renderDiagram ) )
     .on( 'error', onDiagramsRendered )
@@ -79,13 +83,28 @@ function appendTempTarget( tempDir, renderData ){
 }
 
 function writeTempFile( renderData, onTempFileWritten ){
-
+  
   fs.writeFile( renderData.tempTarget, renderData.text, err=>{
 
     if( err ) return onTempFileWritten( err );
     onTempFileWritten( null, renderData );
-    
+
   } );
+
+}
+
+function ensureOutputDirectoryExist( key ){
+
+  return function ensureOutputDirectoryExist( renderData, next ){
+
+    fs.mkdirp( path.dirname( renderData[ key ] ), err=>{
+      
+      if( err ) return next( err );
+      next( null, renderData ); 
+    
+    } );
+
+  };
 
 }
 
