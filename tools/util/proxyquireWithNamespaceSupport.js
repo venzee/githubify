@@ -6,14 +6,14 @@ const fs              = require( 'fs' );
 function cleverProxyquire( modulePath, stubs, ...args ){
 
   const expandedPath = expandNamespace( modulePath, __dirname );
-  const moduleDir = getModuleDirPath( expandedPath );
+  const moduleDir    = getModuleDirPath( expandedPath );
 
   const expandedStubs = Object
     .keys( stubs )
     .reduce( ( expandedStubs, stubPath )=>{
 
       let expandedStubPath = expandNamespace( stubPath, moduleDir );
-      expandedStubPath = expandedStubPath === stubPath // eslint-disable-line padding-line-between-statements
+      expandedStubPath     = expandedStubPath === stubPath // eslint-disable-line padding-line-between-statements
         ? expandedStubPath
         : `./${ expandedStubPath }`;
 
