@@ -24,7 +24,7 @@ function renderMermaidDiagrams( { target, text } , onRendered ){
     .pipe( apply( deleteTempDir ) )
     .pipe( apply( asyncify( updateMarkdown( text ) ) ) )
     .on( 'error', onRendered )
-    .on( 'data', onRendered.bind( null, null ) );
+    .on( 'data', updatedMarkdownText=>onRendered( null, { target, text: updatedMarkdownText } ) );
 
 }
 
@@ -111,7 +111,12 @@ function ensureOutputDirectoryExist( key ){
 function renderDiagram( renderData, onDiagramRendered ){
 
   const errors  = [];
-  const onError =  errors.push.bind( errors );
+
+  function onError( err ){
+
+    errors.push( err );
+
+  }
 
   function onDone( code ){
 
