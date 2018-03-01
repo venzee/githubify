@@ -16,8 +16,8 @@ describe( 'The <tools>/githubify/renderMermaidDiagrams/prepareMermaidRenderData/
 
     const expected = path.join(
       dirPath,
-      markdownFileBaseName,
       MediaDirname,
+      markdownFileBaseName,
       `${ expectedBasename }${ OutputFileTypeExtension }`
     );
 
@@ -36,11 +36,10 @@ describe( 'The <tools>/githubify/renderMermaidDiagrams/prepareMermaidRenderData/
       { uuid: { v4 } }
     ); 
 
-
     const expected = path.join(
       dirPath,
-      markdownFileBaseName,
       MediaDirname,
+      markdownFileBaseName,
       `${ expectedBasename }${ OutputFileTypeExtension }`
     );
 

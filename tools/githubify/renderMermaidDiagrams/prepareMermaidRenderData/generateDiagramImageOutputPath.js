@@ -19,8 +19,8 @@ function generateMermaidDiagramOutputPath( markdownTargetPath, { title } ){
 
   return path.join(
     path.dirname( markdownTargetPath ),
-    mediaFolderBasename,
     MediaDirname,
+    mediaFolderBasename,
     `${ fileBasename }${ OutputFileTypeExtension }`
   );
   
