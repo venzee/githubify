@@ -7,8 +7,8 @@
     "test": "npm run run-tests",
     "tdd": "npm run run-tdd",
     "coverage": "nyc npm run run-tests",
-    "run-tests": "cross-env LOG_LEVEL=OFF mocha --require ./spec/.config/bootstrap.js       --colors --compilers js:babel-core/register ./spec/**/*.test.js",
-    "run-tdd": "mocha --require ./spec/.config/bootstrap.js --watch --colors --require babel-core/register ./spec/**/*.test.js",
+    "run-tests": "cross-env LOG_LEVEL=OFF node_modules/mocha/bin/_mocha --require ./spec/.config/bootstrap.js --colors --require babel-core/register './spec/**/*.test.js'",
+    "run-tdd": "node_modules/mocha/bin/_mocha --require ./spec/.config/bootstrap.js --watch --colors --require babel-core/register './spec/**/*.test.js'",
     "push_to_coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
@@ -16,8 +16,13 @@
     "url": "git+https://github.com/venzee/dev-documentation.git"
   },
   "author": "Venzee, Inc.",
-  "license": "UNLICENSED",
-  "private": true,
+  "contributors": [
+    {
+      "name": "Markus Westerholz",
+      "email": "mwesterholz@gmail.com"
+    }
+  ],
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/venzee/dev-documentation/issues"
   },
@@ -26,16 +31,9 @@
     "async": "^2.6.0",
     "fs-extra": "^5.0.0",
     "glob": "^7.1.2",
-    "js-yaml": "^3.10.0",
     "lodash": "^4.17.5",
-    "markdown-it": "^8.4.0",
-    "markdown-it-emoji": "^1.4.0",
-    "markdown-it-highlightjs": "^3.0.0",
-    "markdown-it-mermaid": "^0.2.5",
-    "markdown-it-toc-and-anchor": "^4.1.2",
     "mermaid": "^7.1.2",
     "mermaid.cli": "^0.3.6",
-    "node-cmd": "^3.0.0",
     "node-run-cmd": "^1.0.1",
     "object-streaming-tools": "^1.1.1",
     "uuid": "^3.2.1",
@@ -64,7 +62,6 @@
     "proxyquire": "^1.8.0",
     "sinon": "^2.4.1",
     "sinon-chai": "^2.14.0",
-    "string-template": "^1.0.0",
     "webpack": "^3.8.1"
   }
 }
