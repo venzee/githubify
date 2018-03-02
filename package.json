@@ -3,7 +3,7 @@
   "bin": {
     "githubify": "lib/index.js"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Convert Markdown files to Github compatible ones. Currently supports Mermaid-Diagram-to-SVG conversion",
   "keywords": [
     "diagram", "markdown", "flowchart", "sequence diagram", "gantt", "class diagram", "git graph", "github markdown", "mermaid", "mermaidjs"
@@ -29,10 +29,11 @@
     }
   ],
   "license": "MIT",
+  "private": false,
   "bugs": {
-    "url": "https://github.com/venzee/dev-documentation/issues"
+    "url": "https://github.com/venzee/githubify/issues"
   },
-  "homepage": "https://github.com/venzee/dev-documentation#readme",
+  "homepage": "https://github.com/venzee/githubify#readme",
   "dependencies": {
     "async": "^2.6.0",
     "fs-extra": "^5.0.0",
