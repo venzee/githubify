@@ -1,8 +1,8 @@
 import path from 'path'; 
 import fs from 'fs-extra'; 
-import githubify from '<tools>/githubify';
+import githubify from '<lib>/index';
 
-describe( 'The <tools>/githubify function', ()=>{
+describe( 'The githubify function', ()=>{
 
   const someDir         = 'someDir';
   const someFile        = 'someFile.md';

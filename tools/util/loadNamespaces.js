@@ -7,7 +7,7 @@ const path
 const staticNamespaces
   = require( '../../.static-namespaces.json' );
 
-const libNamespaces = glob( 'lib/services/*/[^.]*/', { cwd: path.resolve( __dirname, '../..' ) } )
+const libNamespaces = glob( 'lib/[^.]*/', { cwd: path.resolve( __dirname, '../..' ) } )
   .reduce( ( acc, namespacePath )=>Object.assign( acc, entryFor( namespacePath )  ), {} );
 
 module.exports = ()=>{
@@ -26,8 +26,7 @@ module.exports = ()=>{
 
 function entryFor( namespacePath ){
 
-  const namespaceKey
-    = `${ path.basename( path.dirname( namespacePath ) ) }_${ path.basename( namespacePath ) }`;
+  const namespaceKey = `${ path.basename( namespacePath ) }`;
 
   return { [ namespaceKey ]: `./${ namespacePath }` };
 
