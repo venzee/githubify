@@ -126,13 +126,24 @@ link to that image. By default, _githubify_ will use a UUID for the file.
     B-->A;
  ```
 
- And if one of the duplicate instances was named, it will use that diagram's name.
+ And if one of the duplicate instances was named, `githubify` will use that diagram's name.
  The below is an exact copy of _1stDiagram_ above:
 
  ```mermaid
   graph TD;
     A-->B;
  ```
+
+ Lastly, if you have multiple identical diagrams with different names, multiple
+ images will be rendered:
+
+# SameAs1stDiagramButDifferentTitle
+
+ ```mermaid
+  graph TD;
+    A-->B;
+ ```
+
 ````
 
 #### dist/ManyEmbeddedDiagrams
@@ -163,6 +174,12 @@ link to that image. By default, _githubify_ will use a UUID for the file.
  The below is an exact copy of _1stDiagram_ above:
 
  ![alt media/ManyEmbeddedDiagrams/1stDiagram.svg](media/ManyEmbeddedDiagrams/1stDiagram.svg)
+
+ Lastly, if you have multiple identical diagrams with different names, multiple
+ images will be rendered:
+
+ ![alt media/ManyEmbeddedDiagrams/SameAs1stDiagramButDifferentTitle.svg](media/ManyEmbeddedDiagrams/SameAs1stDiagramButDifferentTitle.svg)
+
 ````
 
 #### Folder structure after parsing ManyEmbeddedDiagrams
@@ -173,7 +190,8 @@ link to that image. By default, _githubify_ will use a UUID for the file.
 │   └── media
 │       └── ManyEmbeddedDiagrams
 │           ├── 1stDiagram.svg
-│           └── e94d56a7f2964e11acbb367a1f5d412d.svg
+│           ├── e94d56a7f2964e11acbb367a1f5d412d.svg
+│           └── SameAs1stDiagramButDifferentTitle.svg
 └── src
     └── ManyEmbeddedDiagrams.md
 ```
