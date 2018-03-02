@@ -1,6 +1,6 @@
 # githubify
 
-At [Venzee](https://www.venzee.com]), we use this utility to help us write create docuementation stored in out GitHub repositories. It enables us to use Markdown libraries currently not supported by GitHub.
+At [Venzee](https://www.venzee.com]), we use this utility to help us write create documentation stored in our GitHub repositories. It enables us to use Markdown libraries currently not supported by GitHub.
 
 At time of writing, the library supports offers conversion of [Mermaid](https://mermaidjs.github.io/) to SVG files, which GitHub can render.
 
