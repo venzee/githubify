@@ -1,7 +1,10 @@
 {
-  "name": "dev-documentation",
+  "name": "@venzee/githubify",
+  "bin": {
+    "githubify": "lib/index.js"
+  },
   "version": "1.0.0",
-  "description": "Store and export Dev Documentation",
+  "description": "Convert Markdown files to Github\n\nCurrently supports Mermaid Diagram rendereing to SVG conversion",
   "scripts": {
     "pretest": "eslint --fix .",
     "test": "npm run run-tests",
