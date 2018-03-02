@@ -4,7 +4,7 @@
     "githubify": "lib/index.js"
   },
   "version": "1.0.0",
-  "description": "Convert Markdown files to Github compatible onest \n\nCurrently supports Mermaid-Diagram-to-SVG conversion",
+  "description": "Convert Markdown files to Github compatible ones. Currently supports Mermaid-Diagram-to-SVG conversion",
   "keywords": [
     "diagram", "markdown", "flowchart", "sequence diagram", "gantt", "class diagram", "git graph", "github markdown", "mermaid", "mermaidjs"
   ],
