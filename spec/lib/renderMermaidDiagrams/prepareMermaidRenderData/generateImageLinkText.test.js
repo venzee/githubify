@@ -5,16 +5,18 @@ describe( 'The <renderMermaidDiagrams>/prepareMermaidRenderData/generateImageLin
 
   const title         = 'title';
   const root          = 'root';
+  const mediaDir      = 'media';
   const subdir        = 'subdir';
   const fileDir       = 'fileDir';
-  const diagramTarget = path.join( root, subdir, fileDir );
-  const imagePath     = path.posix.join(  subdir, fileDir );   
+  const markdownPath  = path.join( root, subdir, `${ fileDir }.md` );
+  const diagramTarget = path.join( root, mediaDir, subdir, fileDir );
+  const imagePath     = path.posix.join( '..', mediaDir, subdir, fileDir );   
   
   it( 'should set the alt text to value of "title", if "title" is set', ()=>{
 
     const expected = `![alt ${ title }]`;
 
-    expect( generateImageLinkText( { title, diagramTarget: '' } ) )
+    expect( generateImageLinkText( markdownPath, { title, diagramTarget: '' } ) )
       .to.include( expected );
 
   }  );
@@ -23,7 +25,7 @@ describe( 'The <renderMermaidDiagrams>/prepareMermaidRenderData/generateImageLin
 
     const expected = `![alt ${ title }](${ imagePath })`;
 
-    expect( generateImageLinkText( { title, diagramTarget } ) )
+    expect( generateImageLinkText( markdownPath, { title, diagramTarget } ) )
       .to.equal( expected );
 
   } );
@@ -32,7 +34,7 @@ describe( 'The <renderMermaidDiagrams>/prepareMermaidRenderData/generateImageLin
 
     const expected = `![alt ${ imagePath }](${ imagePath })`;
 
-    expect( generateImageLinkText( { diagramTarget  } ) )
+    expect( generateImageLinkText( markdownPath, { diagramTarget  } ) )
       .to.include( expected );
 
   }  );

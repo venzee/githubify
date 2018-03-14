@@ -18,8 +18,8 @@ describe( 'The <renderMermaidDiagrams>/prepareMermaidRenderData function', ()=>{
   const DiagramTextBlock2 = `\`\`\`mermaid\n${ DiagramText2 }\`\`\``;
   
   const outputInfoDiagram1 = Object.freeze( {
-    diagramTarget: path.join( 'where', 'to', 'copy', 'rendered', 'markdown', 'media', 'file', 'title-1.svg' ),
-    imageLinkText: '![alt Title1](to/copy/rendered/markdown/media/file/title-1.svg)',
+    diagramTarget: path.join( 'where', 'media', 'to', 'copy', 'rendered', 'markdown', 'file', 'title-1.svg' ),
+    imageLinkText: '![alt Title1](../../../../media/to/copy/rendered/markdown/file/title-1.svg)',
     text:          'graph TD;\n  A-->B;\n  A-->C;\n  B-->D;\n',
     title:         'Title1',
     rangesInFile:  [ { startIndex: 0, length: 62 }, { startIndex: 119, length: 51  } ] 
@@ -27,8 +27,8 @@ describe( 'The <renderMermaidDiagrams>/prepareMermaidRenderData function', ()=>{
 
 
   const outputInfoDiagram2 = Object.freeze( {
-    diagramTarget: path.join( 'where', 'to', 'copy', 'rendered', 'markdown', 'media', 'file', 'title-2.svg' ),
-    imageLinkText: '![alt Title2](to/copy/rendered/markdown/media/file/title-2.svg)',
+    diagramTarget: path.join( 'where', 'media', 'to', 'copy', 'rendered', 'markdown', 'file', 'title-2.svg' ),
+    imageLinkText: '![alt Title2](../../../../media/to/copy/rendered/markdown/file/title-2.svg)',
     text:          'graph TD;\n  A-->B;\n  B-->C;\n',
     title:         'Title2',
     rangesInFile:  [ { startIndex: 64, length: 53 } ] 

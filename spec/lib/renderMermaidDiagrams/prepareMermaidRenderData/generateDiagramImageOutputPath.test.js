@@ -5,7 +5,9 @@ import path from 'path';
 
 describe( 'The <renderMermaidDiagrams>/prepareMermaidRenderData/generateDiagramImageOutputPath function', ()=>{ // eslint-disable-line max-len
  
-  const dirPath              =  path.join( 'path', 'to' );
+  const rootDir              = 'path';
+  const parentDir            = 'to';
+  const dirPath              =  path.join( rootDir, parentDir );
   const markdownFileBaseName = 'markdownFile';
   const markdownTargetPath   = path.join( dirPath, `${ markdownFileBaseName }.md` );
 
@@ -15,8 +17,9 @@ describe( 'The <renderMermaidDiagrams>/prepareMermaidRenderData/generateDiagramI
     const expectedBasename = 'some-title';
 
     const expected = path.join(
-      dirPath,
+      rootDir,
       MediaDirname,
+      parentDir,
       markdownFileBaseName,
       `${ expectedBasename }${ OutputFileTypeExtension }`
     );
@@ -37,8 +40,9 @@ describe( 'The <renderMermaidDiagrams>/prepareMermaidRenderData/generateDiagramI
     ); 
 
     const expected = path.join(
-      dirPath,
+      rootDir,
       MediaDirname,
+      parentDir,
       markdownFileBaseName,
       `${ expectedBasename }${ OutputFileTypeExtension }`
     );
