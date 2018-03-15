@@ -3,7 +3,7 @@
   "bin": {
     "githubify": "lib/index.js"
   },
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Convert Markdown files to Github compatible ones. Currently supports Mermaid-Diagram-to-SVG conversion",
   "keywords": [
     "diagram",
