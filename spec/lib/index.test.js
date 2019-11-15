@@ -35,7 +35,7 @@ describe( 'The githubify function', ()=>{
         expect( actual )
           .to.equal( expected );
       
-      } catch( e ){
+      } catch( e ){ // eslint-disable-line no-useless-catch
 
         throw( e );
 
