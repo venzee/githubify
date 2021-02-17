@@ -1,5 +1,6 @@
 {
   "name": "@venzee/githubify",
+  "main": "lib/index.js",
   "bin": {
     "githubify": "lib/index.js"
   },
